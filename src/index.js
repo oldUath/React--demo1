@@ -4,9 +4,9 @@ import './style.css';
 
 function App(){
     return(
-        <div className="App">
+        <div className="App">         
             爸爸
-            <Son />
+            <Son messageForSon={55*2} />
         </div>
     )
 };
@@ -29,19 +29,22 @@ class Son extends React.Component{
             <div className="Son">
                儿子 n:{this.state.n}
                <button onClick={()=>this.add()}>+1</button>
-               <Grandson />
+               {this.props.messageForSon}
+
+               <Grandson message="孙子"/>
             </div>
         )
     }
 
 };
 
-const Grandson = ()=>{
+const Grandson = (props)=>{
     const [n,setN] = React.useState(0)
     return(
         <div className="Grandson">
             孙子 n:{n}
             <button onClick={()=>setN(n+1)}>+1</button>
+            {props.message}
         </div>
     )
 }
